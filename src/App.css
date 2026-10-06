@@ -1,0 +1,89 @@
+/* ==========================================
+   GLOBAL DESIGN SYSTEM & VARIABLES
+   ================================          */
+:root {
+  /* Custom Color Palette */
+  --color-light-blue: #8ECAE6;
+  --color-teal: #219EBC;
+  --color-navy: #023047;
+  --color-yellow: #FFB703;
+  --color-orange: #FB5500;
+  --color-heading: #0f2e72;          /* High-visibility heading color */
+
+  /* Theme Mappings */
+  --primary-accent: #023047;       
+  --primary-hover: #034b70;
+  --secondary-accent: #219EBC;     
+  --light-bg: #F0F8FF;             /* Alice Blue Background */
+  --dark-bg: #023047;              
+  
+  --card-bg-light: #ffffff;
+  --card-border-light: rgba(142, 202, 230, 0.4);
+  
+  --text-main-light: #023047;
+  --text-muted-light: #4b5563;
+  --text-light: #ffffff;
+  --text-muted-dark: #8ECAE6;
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  /* Global Transition Speeds */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s ease-in-out;
+}
+
+/* Base Body Resets */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-bg);
+  color: var(--text-main-light);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   GLOBAL BOLD & VISIBLE HEADING STYLES
+   ================================          */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================
+   GLOBAL TRANSITIONS & ANIMATIONS
+   ================================          */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-page {
+  animation: pageFadeIn 0.4s ease-out forwards;
+}
+
+.hover-lift {
+  transition: var(--transition-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px -3px rgba(2, 48, 71, 0.08);
+}
+
+a, button {
+  transition: var(--transition-fast);
+}

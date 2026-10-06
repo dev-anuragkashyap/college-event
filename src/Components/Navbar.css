@@ -1,0 +1,212 @@
+.navbar {
+  background-color: #0d0d12;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+}
+
+.nav-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Styling */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.3px;
+}
+
+.logo-highlight {
+  color: #E76F51;
+}
+
+/* Nav Links Styling & Hover/Active Animation */
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #B0B0B0;
+  font-size: 0.92rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 0.3rem 0;
+}
+
+.nav-item:hover {
+  color: #FFFFFF;
+}
+
+/* Active Underline Glow Animation matching reference */
+.nav-item.active {
+  color: #FFFFFF;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #E76F51, #7B1C3A);
+  border-radius: 2px;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.dropdown-arrow {
+  font-size: 0.75rem;
+  margin-left: 2px;
+}
+
+/* Right Actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.search-icon-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #FFFFFF;
+  transition: transform 0.2s;
+}
+
+.search-icon-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Explore Events Button matching reference image */
+.explore-events-btn {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1.5px solid #E76F51;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(231, 111, 81, 0.15);
+}
+
+.explore-events-btn:hover {
+  background: linear-gradient(135deg, #7B1C3A, #E76F51);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(231, 111, 81, 0.4);
+}
+
+/* Hamburger Menu Icon (Hidden on Desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background-color: #FFFFFF;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animated Hamburger Transformation */
+.hamburger.toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.toggle span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Highly Responsive Mobile Layout */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .explore-events-btn {
+    display: none; /* Hide top outline button on compact screens if space is tight, or keep it */
+  }
+
+  .nav-container {
+    padding: 0.9rem 1.2rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    height: 100vh;
+    background-color: #121216;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.6);
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-item {
+    font-size: 1.15rem;
+  }
+
+  .nav-item.active::after {
+    bottom: -6px;
+  }
+}
