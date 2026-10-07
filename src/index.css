@@ -27,3 +27,143 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
 }
+
+/* ==========================================
+   GLOBAL ANIMATIONS & TRANSITIONS (Index.css)
+   ================================          */
+
+:root {
+  --transition-speed: 0.4s;
+  --transition-timing: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base smooth scrolling and selection styling */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+  background-color: #f43f5e;
+  color: #ffffff;
+}
+
+/* ==========================================
+   1. PAGE TRANSITIONS (In / Out Animations)
+   ================================          */
+.fade-in-page {
+  animation: pageEnter var(--transition-speed) var(--transition-timing) forwards;
+}
+
+.fade-out-page {
+  animation: pageExit calc(var(--transition-speed) * 0.75) var(--transition-timing) forwards;
+}
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.99);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.99);
+    filter: blur(4px);
+  }
+}
+
+/* ==========================================
+   2. INTERACTIVE HOVER & LIFT ANIMATIONS
+   ================================          */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px -8px rgba(2, 48, 71, 0.12);
+}
+
+/* Smooth scaling effect for images/cards */
+.zoom-effect {
+  overflow: hidden;
+}
+
+.zoom-effect img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zoom-effect:hover img {
+  transform: scale(1.08);
+}
+
+/* ==========================================
+   3. MODERN BUTTON & LINK TRANSITIONS
+   ================================          */
+button, a {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active, a:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================
+   4. RESPONSIVE MOBILE & LAPTOP TWEAKS
+   ================================          */
+/* Disable heavy blur animations on reduced-motion devices for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-page,
+  .fade-out-page,
+  .hover-lift,
+  .zoom-effect img {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* ==========================================
+   UNIVERSAL MOBILE & LAPTOP RESPONSIVE FIXES
+   ================================          */
+
+/* Universal image protection against cutting/stretching */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Ensure all page containers scale fluidly across laptop and mobile */
+.events-container,
+.gallery-container,
+.about-container,
+.contact-container,
+.home-container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Universal mobile grid fallback for multi-column layouts */
+@media (max-width: 768px) {
+  /* Force multi-column grids to stack single column on mobile */
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-5 {
+    grid-template-columns: 1fr !important;
+  }
+}

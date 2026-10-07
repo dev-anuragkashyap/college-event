@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import { Calendar as CalendarIcon, MapPin,Volleyball, Clock, ArrowRight, Camera, Sparkles, Music, Trophy, Utensils, Disc, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar as CalendarIcon, MapPin, Clock, ArrowRight, Camera, Sparkles, Music, Trophy, Utensils, Disc, ChevronLeft, ChevronRight, Volleyball } from 'lucide-react';
 
 // Import your local assets from the assets folder
 import heroBgImg from '../assets/hero-bg.jpeg';
@@ -9,9 +9,10 @@ import dandiyaImg from '../assets/dandiya.jpg';
 import culturalFestImg from '../assets/cultural.jpg';
 import culturalFest2 from '../assets/memory1.jpg';
 import culturalFest3 from '../assets/memory2.jpg';
-import annualFestImg from '../assets/annual.jpg';
+import technovaImg from '../assets/annual.jpg';
+import sportsMeetImg from '../assets/sports.jpg';
+import openMicImg from '../assets/memory2.jpg';
 import freshersImg from '../assets/freshers.jpg';
-import sportsImg from '../assets/sports.jpg';
 
 import pastFreshersImg from '../assets/past-freshers.jpg';
 import pastSportsImg from '../assets/past-sports.webp';
@@ -28,13 +29,13 @@ export default function Home() {
   const navigate = useNavigate();
 
   // Dynamic Countdown Timer State
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({ days: 6, hours: 2, minutes: 51, seconds: 12 });
 
   // Gallery Category Filter State
   const [activeFilter, setActiveFilter] = useState('All');
 
-  // Calendar State (Defaulting to October 2026 as per reference)
-  const [selectedDate, setSelectedDate] = useState(7); // default 7 Oct
+  // Calendar State (Defaulting to October 2026)
+  const [selectedDate, setSelectedDate] = useState(7);
 
   useEffect(() => {
     const targetDate = new Date('2026-10-12T00:00:00').getTime();
@@ -66,18 +67,82 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  const upcomingEvents = [
-    { id: 1, title: "Dandiya Night", date: "15 Oct 2026", location: "College Ground", img: dandiyaImg },
-    { id: 2, title: "Annual Fest", date: "20 Nov 2026", location: "College Campus", img: annualFestImg },
-    { id: 3, title: "Freshers Party", date: "05 Dec 2026", location: "Auditorium", img: freshersImg },
-    { id: 4, title: "Sports Day", date: "14 Dec 2026", location: "Sports Ground", img: sportsImg }
+  const whatsNextEvents = [
+    { 
+      id: 1, 
+      title: "TECHNOVA 2026", 
+      category: "Technical Fest", 
+      date: "16 Oct 2026", 
+      location: "Auditorium & Labs", 
+      countdown: "Starts in 12 Days", 
+      img: technovaImg 
+    },
+    { 
+      id: 2, 
+      title: "SPORTS MEET", 
+      category: "Sports Championship", 
+      date: "25 Oct 2026", 
+      location: "College Ground", 
+      countdown: "Starts in 17 Days", 
+      img: sportsMeetImg 
+    },
+    { 
+      id: 3, 
+      title: "OPEN MIC NIGHT", 
+      category: "Literary & Arts", 
+      date: "02 Nov 2026", 
+      location: "Seminar Hall", 
+      countdown: "Starts in 27 Days", 
+      img: openMicImg 
+    },
+    { 
+      id: 4, 
+      title: "FRESHERS PARTY", 
+      category: "Welcome Event", 
+      date: "12 Nov 2026", 
+      location: "College Ground", 
+      countdown: "Starts in 37 Days", 
+      img: freshersImg 
+    }
   ];
 
   const pastEvents = [
-    { id: 101, title: "Freshers Party 2025", date: "16 Aug 2025", location: "College Ground", img: pastFreshersImg },
-    { id: 102, title: "Sports Day 2025", date: "20 Mar 2025", location: "Sports Ground", img: pastSportsImg },
-    { id: 103, title: "Annual Fest 2025", date: "10 Dec 2025", location: "Auditorium", img: pastAnnualImg },
-    { id: 104, title: "Cultural Night 2025", date: "01 Nov 2025", location: "College Ground", img: pastCulturalImg }
+    { 
+      id: 101, 
+      title: "FRESHER'S PARTY 2025", 
+      category: "Welcome Event", 
+      date: "16 Aug 2025", 
+      location: "College Ground", 
+      tag: "PAST EVENT", 
+      img: pastFreshersImg 
+    },
+    { 
+      id: 102, 
+      title: "SPORTS DAY 2025", 
+      category: "Sports Championship", 
+      date: "20 Mar 2025", 
+      location: "Sports Ground", 
+      tag: "PAST EVENT", 
+      img: pastSportsImg 
+    },
+    { 
+      id: 103, 
+      title: "ANNUAL FEST 2025", 
+      category: "Cultural Fest", 
+      date: "10 Dec 2025", 
+      location: "Auditorium", 
+      tag: "PAST EVENT", 
+      img: pastAnnualImg 
+    },
+    { 
+      id: 104, 
+      title: "CULTURAL NIGHT 2025", 
+      category: "Music & Dance", 
+      date: "01 Nov 2025", 
+      location: "College Ground", 
+      tag: "PAST EVENT", 
+      img: pastCulturalImg 
+    }
   ];
 
   const galleryImages = [
@@ -85,7 +150,7 @@ export default function Home() {
     { img: culturalFest2, category: 'Festival', span: 'small' },
     { img: memory2, category: 'Cultural', span: 'small' },
     { img: culturalFest3, category: 'Tech', span: 'tall' },
-    { img: sportsImg, category: 'Sports', span: 'small' },
+    { img: sportsMeetImg, category: 'Sports', span: 'small' },
     { img: memory3, category: 'Campus Life', span: 'small' },
     { img: memory4, category: 'Festival', span: 'small' }
   ];
@@ -94,19 +159,17 @@ export default function Home() {
     ? galleryImages 
     : galleryImages.filter(item => item.category === activeFilter);
 
-  // Calendar events mapping based on selected date
   const calendarEventsMap = {
     7: [
       { title: "Cultural Fest 2026", location: "Main Ground • 12:00 AM", type: "ongoing" },
       { title: "Photography Workshop", location: "Seminar Hall • 2:00 PM", type: "upcoming" },
       { title: "Basketball Match", location: "Sports Complex • 4:00 PM", type: "past" }
     ],
-    12: [
-      { title: "Hackathon 2026", location: "CS Lab 3 • 10:00 AM", type: "upcoming" },
-      { title: "Robotics Exhibition", location: "Auditorium • 3:30 PM", type: "upcoming" }
+    16: [
+      { title: "TECHNOVA 2026", location: "Auditorium & Labs • 10:00 AM", type: "upcoming" }
     ],
-    15: [
-      { title: "Dandiya Night", location: "College Ground • 6:00 PM", type: "upcoming" }
+    25: [
+      { title: "SPORTS MEET", location: "College Ground • 9:00 AM", type: "upcoming" }
     ],
     default: [
       { title: "Campus Meetup", location: "Main Hall • 11:00 AM", type: "upcoming" }
@@ -144,44 +207,44 @@ export default function Home() {
           <button className="home-hero-btn" onClick={() => navigate('/events')}>
             Explore Events <ArrowRight className="w-4 h-4"/>
           </button>
-          <div className="home-hero-watermark">Good Vibes Only</div>
+          <div className="home-hero-watermark"></div>
         </div>
       </div>
-
       <div className="home-wrapper">
-        {/*Campus Visit Section*/}
-         <section>
+
+       <section>
           <div className="home-current-event-container" onClick={() => handleEventClick(999)}>
             <div className="home-current-left">
-              <div className="home-current-tag">Upcoming Event</div>
-              <h2 className="home-current-title">College Visit</h2>
-              <p className="home-current-subtitle">Study hall School student visiting Study Hall College</p>
+              <div className="home-current-tag">UPCOMING EVENT</div>
+              <h2 className="home-current-title">Campas Visit 2026</h2>
+              <p className="home-current-subtitle">Joyful days of Sports,learning, drama, creativity and celebration.</p>
               
               <div className="home-current-meta-row">
                 <div className="home-current-meta-item">
                   <CalendarIcon className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span>Coming Soon</span>
+                    <strong>One Day</strong>
+                    <span>Be raedy on 14 October</span>
                   </div>
                 </div>
                 <div className="home-current-meta-item">
                   <MapPin className="w-4 h-4 text-teal-600" />
                   <div>
                     <strong>Main Campus</strong>
-                    <span>Academic Building</span>
+                    <span></span>
                   </div>
                 </div>
               </div>
 
               <div className="home-current-tags-grid">
-                <span className="home-current-pill"><Music className="w-3.5 h-3.5" /> Performances</span>
+                <span className="home-current-pill"><Volleyball className="w-3.5 h-3.5" /> Sports</span>
                 <span className="home-current-pill"><Trophy className="w-3.5 h-3.5" /> Competitions</span>
-                <span className="home-current-pill"><Volleyball className="w-3.5 h-3.5" /> Sports </span>
-                <span className="home-current-pill"><Disc className="w-3.5 h-3.5" /> Study</span>
+                <span className="home-current-pill"><Utensils className="w-3.5 h-3.5" /> Food </span>
+                <span className="home-current-pill"><Disc className="w-3.5 h-3.5" /> Quiz</span>
               </div>
 
               <div className="home-large-countdown-wrapper">
-                <span className="home-countdown-label-top">Remaining Time For Event</span>
+                <span className="home-countdown-label-top">Countdown to live the moment</span>
                 <div className="home-large-countdown-grid">
                   <div className="home-lg-cd-box">
                     <span className="home-lg-number">{timeLeft.days}</span>
@@ -203,7 +266,7 @@ export default function Home() {
               </div>
 
               <button className="home-current-explore-btn" onClick={(e) => { e.stopPropagation(); handleEventClick(999); }}>
-                View Full Details &rarr;
+                Explore Event &rarr;
               </button>
             </div>
 
@@ -222,21 +285,20 @@ export default function Home() {
           </div>
         </section>
 
-        
         {/* CURRENT EVENT & ENLARGED COUNTDOWN SECTION */}
         <section>
           <div className="home-current-event-container" onClick={() => handleEventClick(999)}>
             <div className="home-current-left">
-              <div className="home-current-tag">Upcoming Event</div>
+              <div className="home-current-tag">UPCOMING EVENT</div>
               <h2 className="home-current-title">Dandiya Night 2026</h2>
-              <p className="home-current-subtitle">Three days of music, dance, drama, creativity and celebration.</p>
+              <p className="home-current-subtitle">Joyful days of music, dance, drama, creativity and celebration.</p>
               
               <div className="home-current-meta-row">
                 <div className="home-current-meta-item">
                   <CalendarIcon className="w-4 h-4 text-teal-600" />
                   <div>
-                    <strong>Day 2 of 3</strong>
-                    <span>Coming Soon</span>
+                    <strong>One Day</strong>
+                    <span>Be raedy on 16 October</span>
                   </div>
                 </div>
                 <div className="home-current-meta-item">
@@ -256,7 +318,7 @@ export default function Home() {
               </div>
 
               <div className="home-large-countdown-wrapper">
-                <span className="home-countdown-label-top">Remaining Time For Event</span>
+                <span className="home-countdown-label-top">Countdown to Grand Finale</span>
                 <div className="home-large-countdown-grid">
                   <div className="home-lg-cd-box">
                     <span className="home-lg-number">{timeLeft.days}</span>
@@ -278,7 +340,7 @@ export default function Home() {
               </div>
 
               <button className="home-current-explore-btn" onClick={(e) => { e.stopPropagation(); handleEventClick(999); }}>
-                View Full Details &rarr;
+                Explore Event &rarr;
               </button>
             </div>
 
@@ -297,58 +359,74 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Upcoming Events Grid */}
-        <section className="home-modern-section">
+        {/* WHAT'S NEXT? UPCOMING EVENTS SECTION */}
+        <section className="home-whats-next-section">
           <div className="home-section-header">
-            <div className="home-section-title-wrap">
-              <CalendarIcon className="w-5 h-5 text-indigo-600" />
-              <h3 className="home-section-main-title">Upcoming Events</h3>
+            <div>
+              <span className="home-whats-next-tag">UPCOMING EVENTS</span>
+              <h2 className="home-whats-next-title">What's Next?</h2>
+              <p className="home-whats-next-sub">Mark your calendar and be a part of the excitement!</p>
             </div>
-            <span className="home-view-all" onClick={() => navigate('/events')}>View All &rarr;</span>
+            <span className="home-view-all" onClick={() => navigate('/events')}>View All Events &rarr;</span>
           </div>
 
-          <div className="home-grid-3">
-            {upcomingEvents.slice(0, 3).map((event) => (
-              <div key={event.id} className="home-modern-card" onClick={() => handleEventClick(event.id)}>
-                <div className="home-modern-img-wrap">
-                  <img src={event.img} alt={event.title} />
+          <div className="home-whats-next-grid">
+            {whatsNextEvents.map((item) => (
+              <div key={item.id} className="home-wn-card" onClick={() => handleEventClick(item.id)}>
+                <div className="home-wn-img-wrap">
+                  <span className="home-wn-badge">UPCOMING</span>
+                  <img src={item.img} alt={item.title} />
                 </div>
-                <div className="home-modern-body">
-                  <h4 className="home-modern-title">{event.title}</h4>
-                  <div className="home-modern-info-row">
-                    <span><CalendarIcon className="w-3.5 h-3.5 text-gray-400" /> {event.date}</span>
-                    <span><MapPin className="w-3.5 h-3.5 text-gray-400" /> {event.location}</span>
+                <div className="home-wn-body">
+                  <div className="home-wn-date-row">
+                    <CalendarIcon className="w-3.5 h-3.5 text-gray-400" /> {item.date}
                   </div>
-                  <button className="home-modern-btn">View Event &rarr;</button>
+                  <h4 className="home-wn-card-title">{item.title}</h4>
+                  <p className="home-wn-category">{item.category}</p>
+                  <p className="home-wn-location"><MapPin className="w-3.5 h-3.5 text-gray-400" /> {item.location}</p>
+                  
+                  <div className="home-wn-countdown-badge">
+                    <Clock className="w-3 h-3 text-rose-500" /> {item.countdown}
+                  </div>
+
+                  <button className="home-wn-btn">View Details &rarr;</button>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Past Events Grid */}
-        <section className="home-modern-section">
+        {/* PAST EVENTS SECTION (Matched to 4-Column Card Layout) */}
+        <section className="home-whats-next-section">
           <div className="home-section-header">
-            <div className="home-section-title-wrap">
-              <Clock className="w-5 h-5 text-indigo-600" />
-              <h3 className="home-section-main-title">Past Events</h3>
+            <div>
+              <span className="home-whats-next-tag" style={{ color: '#219EBC' }}>ARCHIVES</span>
+              <h2 className="home-whats-next-title">Past Events</h2>
+              <p className="home-whats-next-sub">Relive the unforgettable moments from previous years.</p>
             </div>
-            <span className="home-view-all" onClick={() => navigate('/events')}>View All &rarr;</span>
+            <span className="home-view-all" onClick={() => navigate('/gallery')}>View All Memories &rarr;</span>
           </div>
 
-          <div className="home-grid-3">
-            {pastEvents.slice(0, 3).map((event) => (
-              <div key={event.id} className="home-modern-card" onClick={() => handleEventClick(event.id)}>
-                <div className="home-modern-img-wrap">
-                  <img src={event.img} alt={event.title} />
+          <div className="home-whats-next-grid">
+            {pastEvents.map((item) => (
+              <div key={item.id} className="home-wn-card" onClick={() => handleEventClick(item.id)}>
+                <div className="home-wn-img-wrap">
+                  <span className="home-wn-badge" style={{ backgroundColor: 'rgba(33, 158, 188, 0.9)' }}>PAST</span>
+                  <img src={item.img} alt={item.title} />
                 </div>
-                <div className="home-modern-body">
-                  <h4 className="home-modern-title">{event.title}</h4>
-                  <div className="home-modern-info-row">
-                    <span><CalendarIcon className="w-3.5 h-3.5 text-gray-400" /> {event.date}</span>
-                    <span><MapPin className="w-3.5 h-3.5 text-gray-400" /> {event.location}</span>
+                <div className="home-wn-body">
+                  <div className="home-wn-date-row">
+                    <CalendarIcon className="w-3.5 h-3.5 text-gray-400" /> {item.date}
                   </div>
-                  <button className="home-modern-btn-outline">Gallery &rarr;</button>
+                  <h4 className="home-wn-card-title">{item.title}</h4>
+                  <p className="home-wn-category">{item.category}</p>
+                  <p className="home-wn-location"><MapPin className="w-3.5 h-3.5 text-gray-400" /> {item.location}</p>
+                  
+                  <div className="home-wn-countdown-badge" style={{ backgroundColor: 'rgba(33, 158, 188, 0.08)', color: '#219EBC' }}>
+                    <Camera className="w-3 h-3" /> Memories Available
+                  </div>
+
+                  <button className="home-wn-btn past-btn">Gallery &rarr;</button>
                 </div>
               </div>
             ))}
@@ -409,7 +487,6 @@ export default function Home() {
           
           <div className="home-calendar-container">
             
-            {/* Left Column: Title, Subtitle & Legend */}
             <div className="home-cal-left">
               <span className="home-moments-tag">EVENT CALENDAR</span>
               <h2 className="home-moments-title">Find Your Date</h2>
@@ -428,7 +505,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Middle Column: Interactive Calendar Widget */}
             <div className="home-cal-widget">
               <div className="home-cal-header">
                 <button className="home-cal-nav-btn"><ChevronLeft className="w-4 h-4" /></button>
@@ -441,11 +517,10 @@ export default function Home() {
                   <div key={day} className="home-cal-day-name">{day}</div>
                 ))}
 
-                {/* Calendar Days */}
                 {[...Array(31)].map((_, i) => {
                   const dayNum = i + 1;
                   const isSelected = selectedDate === dayNum;
-                  const hasEvent = [3, 14, 16, 20, 24, 28].includes(dayNum);
+                  const hasEvent = [2, 7, 16, 25, 28].includes(dayNum);
                   const isOngoing = dayNum === 7;
                   const isPast = dayNum < 5;
 
@@ -465,7 +540,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: Events List for Selected Date */}
             <div className="home-cal-events-list">
               <h4 className="home-cal-list-title">Events on {selectedDate} Oct</h4>
               

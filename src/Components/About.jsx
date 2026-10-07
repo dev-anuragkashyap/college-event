@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import './About.css';
 import { Award, Users, Target, Calendar, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 
-// Import your local assets from the assets folder
-// Adjust file names and paths to match your actual files in src/assets/
+// Import local assets from the assets folder
 import aboutHeroImg from '../assets/hero-bg.jpeg';
-import campusTeamImg from '../assets/memory1.jpg';
-import workshopImg from '../assets/memory2.jpg';
+import campusTeamImg from '../assets/cultural.jpg';
+import workshopImg from '../assets/memory1.jpg';
 
 export default function About() {
   const navigate = useNavigate();
@@ -71,7 +70,7 @@ export default function About() {
         <section className="about-mission-section">
           <div className="about-mission-text">
             <div className="about-tag">
-              <Target className="w-4 h-4" /> Our Mission & Vision
+              <Target className="w-4 h-4 text-teal-600" /> OUR MISSION & VISION
             </div>
             <h2 className="about-section-heading">Creating Moments That Last a Lifetime</h2>
             <p className="about-text-lead">
@@ -80,8 +79,8 @@ export default function About() {
             <p className="about-text-body">
               Our platform ensures that no student ever misses out on an opportunity to participate, lead, or cherish campus milestones. From the grand stage of the Annual Fest to the collaborative buzz of hackathons, we keep the campus pulse alive.
             </p>
-            <button className="about-primary-btn" onClick={() => navigate('/contact')}>
-              Get in Touch <ArrowRight className="w-4 h-4" />
+            <button className="about-primary-btn" onClick={() => navigate('/events')}>
+              Explore Events <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
@@ -109,7 +108,7 @@ export default function About() {
         <section className="about-values-section">
           <div className="about-center-header">
             <div className="about-tag justify-center">
-              <Award className="w-4 h-4" /> What Drives Us
+              <Award className="w-4 h-4 text-teal-600" /> WHAT DRIVES US
             </div>
             <h2 className="about-section-heading">Our Core Values</h2>
             <p className="about-section-sub">Built by students, for students—fostering collaboration and passion.</p>
@@ -131,11 +130,11 @@ export default function About() {
           <h2>Ready to Join the Next Big Event?</h2>
           <p>Explore upcoming fests, check out past memories, or register your participation today.</p>
           <div className="about-cta-buttons">
-            <button className="about-primary-btn" onClick={() => navigate('/events')}>
+            <button className="about-cta-primary-btn" onClick={() => navigate('/events')}>
               Explore Events <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="about-outline-btn" onClick={() => navigate('/contact')}>
-              Contact Organizers
+            <button className="about-cta-outline-btn" onClick={() => navigate('/')}>
+              Back to Home
             </button>
           </div>
         </section>

@@ -6,7 +6,7 @@ import Home from './Components/Home';
 // Import your other pages here as you create them, for example:
 import About from './Components/About';
 // import Events from './pages/Events';
-// import Gallery from './pages/Gallery';
+import Gallery from './Components/Gallery';
 import Contact from './Components/Contact';
 import './App.css';
 
@@ -21,7 +21,9 @@ export default function App() {
              <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
             {/* <Route path="/events" element={<Events />} /> */}
-            {/* <Route path="/gallery" element={<Gallery />} /> */}
+            {/* 
+            */}
+            <Route path="/gallery" element={<Gallery />} /> 
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
