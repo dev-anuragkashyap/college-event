@@ -8,7 +8,7 @@
   --color-navy: #023047;
   --color-yellow: #FFB703;
   --color-orange: #FB5500;
-  --color-heading: #0f2e72;          /* High-visibility heading color */
+  --color-heading: #219EBC;          /* Updated heading color to a shade of blue */
 
   /* Theme Mappings */
   --primary-accent: #023047;       
@@ -49,7 +49,7 @@ body {
 }
 
 /* ==========================================
-   GLOBAL BOLD & VISIBLE HEADING STYLES
+   GLOBAL BOLD & VISIBLE HEADING STYLES (Blue Shade)
    ================================          */
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-heading);
