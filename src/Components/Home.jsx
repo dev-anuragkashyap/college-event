@@ -372,7 +372,7 @@ export default function Home() {
                 {[...Array(31)].map((_, i) => {
                   const dayNum = i + 1;
                   const isSelected = selectedDate === dayNum;
-                  const hasEvent = [2, 7, 12, 15, 20, 24, 28].includes(dayNum);
+                  const hasEvent = [3, 14, 16, 20, 24, 28].includes(dayNum);
                   const isOngoing = dayNum === 7;
                   const isPast = dayNum < 5;
 
