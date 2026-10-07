@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import { Calendar as CalendarIcon, MapPin, Clock, ArrowRight, Camera, Sparkles, Music, Trophy, Utensils, Disc, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar as CalendarIcon, MapPin,Volleyball, Clock, ArrowRight, Camera, Sparkles, Music, Trophy, Utensils, Disc, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Import your local assets from the assets folder
 import heroBgImg from '../assets/hero-bg.jpeg';
@@ -149,6 +149,79 @@ export default function Home() {
       </div>
 
       <div className="home-wrapper">
+        {/*Campus Visit Section*/}
+         <section>
+          <div className="home-current-event-container" onClick={() => handleEventClick(999)}>
+            <div className="home-current-left">
+              <div className="home-current-tag">Upcoming Event</div>
+              <h2 className="home-current-title">College Visit</h2>
+              <p className="home-current-subtitle">Study hall School student visiting Study Hall College</p>
+              
+              <div className="home-current-meta-row">
+                <div className="home-current-meta-item">
+                  <CalendarIcon className="w-4 h-4 text-teal-600" />
+                  <div>
+                    <span>Coming Soon</span>
+                  </div>
+                </div>
+                <div className="home-current-meta-item">
+                  <MapPin className="w-4 h-4 text-teal-600" />
+                  <div>
+                    <strong>Main Campus</strong>
+                    <span>Academic Building</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="home-current-tags-grid">
+                <span className="home-current-pill"><Music className="w-3.5 h-3.5" /> Performances</span>
+                <span className="home-current-pill"><Trophy className="w-3.5 h-3.5" /> Competitions</span>
+                <span className="home-current-pill"><Volleyball className="w-3.5 h-3.5" /> Sports </span>
+                <span className="home-current-pill"><Disc className="w-3.5 h-3.5" /> Study</span>
+              </div>
+
+              <div className="home-large-countdown-wrapper">
+                <span className="home-countdown-label-top">Remaining Time For Event</span>
+                <div className="home-large-countdown-grid">
+                  <div className="home-lg-cd-box">
+                    <span className="home-lg-number">{timeLeft.days}</span>
+                    <span className="home-lg-label">Days</span>
+                  </div>
+                  <div className="home-lg-cd-box">
+                    <span className="home-lg-number">{timeLeft.hours}</span>
+                    <span className="home-lg-label">Hours</span>
+                  </div>
+                  <div className="home-lg-cd-box">
+                    <span className="home-lg-number">{timeLeft.minutes}</span>
+                    <span className="home-lg-label">Mins</span>
+                  </div>
+                  <div className="home-lg-cd-box">
+                    <span className="home-lg-number">{timeLeft.seconds}</span>
+                    <span className="home-lg-label">Secs</span>
+                  </div>
+                </div>
+              </div>
+
+              <button className="home-current-explore-btn" onClick={(e) => { e.stopPropagation(); handleEventClick(999); }}>
+                View Full Details &rarr;
+              </button>
+            </div>
+
+            <div className="home-current-right">
+              <div className="home-polaroid main-polaroid">
+                <img src={culturalFestImg} alt="Cultural Fest Main" />
+              </div>
+              <div className="home-polaroid side-polaroid-top">
+                <img src={culturalFest2} alt="Cultural Fest Crowd" />
+              </div>
+              <div className="home-polaroid side-polaroid-bottom">
+                <img src={culturalFest3} alt="Cultural Fest Performance" />
+              </div>
+              <div className="home-polaroid-watermark">Good Vibes Only</div>
+            </div>
+          </div>
+        </section>
+
         
         {/* CURRENT EVENT & ENLARGED COUNTDOWN SECTION */}
         <section>
