@@ -1,5 +1,5 @@
 /* ==========================================
-   HOME PAGE STYLESHEET (Contact Page Theme)
+   HOME PAGE STYLESHEET (Contact Theme & Countdown)
    ================================          */
 .home-container {
   min-height: 100vh;
@@ -35,7 +35,7 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.02);
-  transition: transform 5s ease-in-out;
+  transition: transform 10s ease-in-out;
 }
 
 .home-hero:hover .home-hero-image {
@@ -71,7 +71,7 @@
 }
 
 .home-hero-title span {
-  color: #FFB703; /* Synchronized with Contact page yellow accent */
+  color: #FFB703; 
 }
 
 .home-hero-desc {
@@ -134,76 +134,122 @@
 }
 
 /* ==========================================
-   CURRENT EVENT SECTION & ENLARGED COUNTDOWN
+   BEAUTIFUL FEATURED COUNTDOWN SECTION STYLING
    ================================          */
-.home-current-event-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: center;
-  background-color: #ffffff;
-  border: 1px solid rgba(142, 202, 230, 0.4);
-  border-radius: 1.75rem;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 10px 30px rgba(2, 48, 71, 0.04);
+.countdown-hero-section {
+  background: linear-gradient(135deg, #023047 0%, #033f5b 50%, #023047 100%);
+  border: 1px solid rgba(142, 202, 230, 0.3);
+  border-radius: 2rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 20px 40px -10px rgba(2, 48, 71, 0.25);
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
 }
 
-@media (min-width: 1024px) {
-  .home-current-event-container {
-    grid-template-columns: 1.25fr 1fr;
-    gap: 4rem;
-    padding: 3rem;
+.countdown-hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(33, 158, 188, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.countdown-content-wrapper {
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.countdown-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 183, 3, 0.15);
+  color: #FFB703;
+  border: 1px solid rgba(255, 183, 3, 0.3);
+  padding: 0.35rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #FFB703;
+  border-radius: 50%;
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 183, 3, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(255, 183, 3, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 183, 3, 0);
   }
 }
 
-.home-current-tag {
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #e11d48;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.home-current-title {
-  font-size: 2.75rem;
+.countdown-main-title {
+  font-size: 3rem;
   font-weight: 900;
-  color: #023047;
+  color: #ffffff;
   margin-bottom: 0.5rem;
   letter-spacing: -0.025em;
 }
 
-.home-current-subtitle {
-  font-size: 1.05rem;
-  color: #555555;
-  margin-bottom: 1.75rem;
-  line-height: 1.5;
+@media (max-width: 768px) {
+  .countdown-main-title {
+    font-size: 2.25rem;
+  }
 }
 
-.home-current-meta-row {
+.countdown-sub-desc {
+  font-size: 1.05rem;
+  color: #8ECAE6;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+
+.countdown-meta-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.5rem;
-  margin-bottom: 1.75rem;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.home-current-meta-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.9rem;
-}
-
-.home-current-meta-item strong {
-  display: block;
-  color: #023047;
+.countdown-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(142, 202, 230, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
-}
-
-.home-current-meta-item span {
-  color: #666666;
-  font-size: 0.8rem;
+  color: #ffffff;
 }
 
 .home-current-tags-grid {
@@ -213,10 +259,15 @@
   margin-bottom: 1.75rem;
 }
 
+.home-current-tags-grid.justify-center {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 .home-current-pill {
-  background-color: rgba(33, 158, 188, 0.12);
-  color: #023047;
-  border: 1px solid rgba(33, 158, 188, 0.3);
+  background-color: rgba(33, 158, 188, 0.15);
+  color: #8ECAE6;
+  border: 1px solid rgba(33, 158, 188, 0.35);
   padding: 0.35rem 0.85rem;
   border-radius: 2rem;
   font-size: 0.75rem;
@@ -227,23 +278,31 @@
 }
 
 .home-large-countdown-wrapper {
-  background-color: #023047;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  margin-bottom: 1.75rem;
-  max-width: 480px;
-  box-shadow: 0 10px 25px rgba(2, 48, 71, 0.15);
+  background: rgba(1, 30, 45, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(142, 202, 230, 0.25);
+  border-radius: 1.25rem;
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+.countdown-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .home-countdown-label-top {
-  display: block;
   font-size: 0.8rem;
   font-weight: 800;
   color: #FFB703;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.75rem;
-  text-align: center;
+  letter-spacing: 0.1em;
 }
 
 .home-large-countdown-grid {
@@ -253,137 +312,57 @@
 }
 
 .home-lg-cd-box {
-  background-color: rgba(142, 202, 230, 0.15);
-  border: 1px solid rgba(142, 202, 230, 0.3);
-  border-radius: 0.75rem;
-  padding: 0.75rem 0.5rem;
+  background: linear-gradient(135deg, rgba(33, 158, 188, 0.2) 0%, rgba(2, 48, 71, 0.4) 100%);
+  border: 1px solid rgba(142, 202, 230, 0.35);
+  border-radius: 1rem;
+  padding: 1rem 0.75rem;
   text-align: center;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.home-lg-cd-box:hover {
+  transform: translateY(-4px);
+  border-color: #FFB703;
 }
 
 .home-lg-number {
   display: block;
-  font-size: 1.75rem;
+  font-size: 2.25rem;
   font-weight: 900;
-  color: #ffffff;
+  color: #FFB703;
   line-height: 1.1;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.2rem;
 }
 
 .home-lg-label {
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 800;
   color: #8ECAE6;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .home-current-explore-btn {
   background-color: #FFB703;
   color: #023047;
-  padding: 0.8rem 1.8rem;
+  padding: 0.9rem 2.2rem;
   border-radius: 2rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 800;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 183, 3, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 183, 3, 0.35);
   transition: all 0.25s ease;
 }
 
 .home-current-explore-btn:hover {
   background-color: #e5a400;
   transform: translateY(-2px);
-}
-
-.home-current-right {
-  position: relative;
-  min-height: 380px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home-polaroid {
-  background: #ffffff;
-  padding: 10px 10px 28px 10px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
-  position: absolute;
-  transition: transform 0.3s ease;
-}
-
-.main-polaroid {
-  width: 340px;
-  height: 240px;
-  transform: rotate(-2deg);
-  z-index: 2;
-}
-
-.main-polaroid img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.side-polaroid-top {
-  width: 170px;
-  height: 115px;
-  top: 15px;
-  right: 20px;
-  transform: rotate(6deg);
-  z-index: 3;
-}
-
-.side-polaroid-top img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.side-polaroid-bottom {
-  width: 190px;
-  height: 130px;
-  bottom: 10px;
-  right: 45px;
-  transform: rotate(-5deg);
-  z-index: 4;
-}
-
-.side-polaroid-bottom img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.home-polaroid-watermark {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-family: cursive, sans-serif;
-  color: #888888;
-  font-size: 1rem;
-  transform: rotate(10deg);
-  pointer-events: none;
-  z-index: 5;
-}
-
-@media (max-width: 768px) {
-  .main-polaroid {
-    width: 240px;
-    height: 170px;
-  }
-  .side-polaroid-top {
-    width: 120px;
-    height: 85px;
-  }
-  .side-polaroid-bottom {
-    width: 135px;
-    height: 95px;
-  }
+  box-shadow: 0 10px 25px rgba(255, 183, 3, 0.5);
 }
 
 /* ==========================================
-   WHAT'S NEXT? & PAST EVENTS (4-COLUMN CARD & IMAGE FIX)
+   WHAT'S NEXT? & PAST EVENTS SECTION
    ================================          */
 .home-whats-next-section {
   margin-top: 1rem;
@@ -449,7 +428,6 @@
   box-shadow: 0 16px 30px -5px rgba(2, 48, 71, 0.1);
 }
 
-/* Fixed Image Wrapper for Upcoming & Past Cards */
 .home-wn-img-wrap {
   width: 100%;
   height: 200px;
@@ -562,7 +540,6 @@
   color: #ffffff;
 }
 
-/* Section Header Layout */
 .home-section-header {
   display: flex;
   justify-content: space-between;
@@ -575,7 +552,7 @@
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
 }
 
 .home-view-all:hover {
@@ -584,7 +561,7 @@
 }
 
 /* ==========================================
-   MOMENTS THAT MATTER GALLERY SECTION
+   PHOTO GALLERY SECTION
    ================================          */
 .home-moments-section {
   width: 100%;
@@ -752,7 +729,7 @@
 }
 
 /* ==========================================
-   EVENT CALENDAR SECTION ("Find Your Date")
+   EVENT CALENDAR SECTION
    ================================          */
 .home-calendar-section {
   width: 100%;

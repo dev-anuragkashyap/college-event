@@ -5,10 +5,7 @@ import { Calendar as CalendarIcon, MapPin, Clock, ArrowRight, Camera, Sparkles, 
 
 // Import your local assets from the assets folder
 import heroBgImg from '../assets/hero-bg.jpeg';
-import dandiyaImg from '../assets/dandiya.jpg';
 import culturalFestImg from '../assets/cultural.jpg';
-import culturalFest2 from '../assets/memory1.jpg';
-import culturalFest3 from '../assets/memory2.jpg';
 import technovaImg from '../assets/annual.jpg';
 import sportsMeetImg from '../assets/sports.jpg';
 import openMicImg from '../assets/memory2.jpg';
@@ -19,11 +16,11 @@ import pastSportsImg from '../assets/past-sports.webp';
 import pastAnnualImg from '../assets/past-annual.jpg';
 import pastCulturalImg from '../assets/past-cultural.jpg';
 
-import memory1 from '../assets/memory1.jpg';
+import culturalFest2 from '../assets/memory1.jpg';
+import culturalFest3 from '../assets/memory2.jpg';
 import memory2 from '../assets/memory2.jpg';
 import memory3 from '../assets/memory3.jpg';
 import memory4 from '../assets/memory4.jpg';
-import memory5 from '../assets/memory5.jpg';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -211,129 +208,59 @@ export default function Home() {
           <div className="home-hero-watermark"></div>
         </div>
       </div>
+
       <div className="home-wrapper">
 
-       <section>
-          <div className="home-current-event-container" onClick={() => handleEventClick(999)}>
-            <div className="home-current-left">
-              <div className="home-current-tag">UPCOMING EVENT</div>
-              <h2 className="home-current-title">Campas Visit 2026</h2>
-              <p className="home-current-subtitle">Joyful days of Sports,learning, drama, creativity and celebration.</p>
+        {/* BEAUTIFUL FEATURED COUNTDOWN SECTION */}
+        <section>
+          <div className="home-current-event-container countdown-hero-section" onClick={() => handleEventClick(999)}>
+            <div className="countdown-content-wrapper">
               
-              <div className="home-current-meta-row">
-                <div className="home-current-meta-item">
-                  <CalendarIcon className="w-4 h-4 text-teal-600" />
-                  <div>
-                    <strong>One Day</strong>
-                    <span>Be raedy on 14 October</span>
-                  </div>
+              <div className="countdown-badge-pill">
+                <span className="live-pulse-dot"></span> UPCOMING FEATURED EVENT
+              </div>
+              
+              <h2 className="countdown-main-title">Campus Visit 2026</h2>
+              <p className="countdown-sub-desc">Joyful days of sports, learning, drama, creativity, and unforgettable celebrations.</p>
+              
+              <div className="countdown-meta-flex">
+                <div className="countdown-meta-badge">
+                  <CalendarIcon className="w-4 h-4 text-teal-400" />
+                  <span>14 October 2026</span>
                 </div>
-                <div className="home-current-meta-item">
-                  <MapPin className="w-4 h-4 text-teal-600" />
-                  <div>
-                    <strong>Main Campus</strong>
-                    <span></span>
-                  </div>
+                <div className="countdown-meta-badge">
+                  <MapPin className="w-4 h-4 text-teal-400" />
+                  <span>Main Campus Ground</span>
                 </div>
               </div>
 
-              <div className="home-current-tags-grid">
+              <div className="home-current-tags-grid justify-center">
                 <span className="home-current-pill"><Volleyball className="w-3.5 h-3.5" /> Sports</span>
                 <span className="home-current-pill"><Trophy className="w-3.5 h-3.5" /> Competitions</span>
-                <span className="home-current-pill"><Utensils className="w-3.5 h-3.5" /> Food </span>
-                <span className="home-current-pill"><Disc className="w-3.5 h-3.5" /> Quiz</span>
-              </div>
-
-              <div className="home-large-countdown-wrapper">
-                <span className="home-countdown-label-top">Countdown to live the moment</span>
-                <div className="home-large-countdown-grid">
-                  <div className="home-lg-cd-box">
-                    <span className="home-lg-number">{timeLeft.days}</span>
-                    <span className="home-lg-label">Days</span>
-                  </div>
-                  <div className="home-lg-cd-box">
-                    <span className="home-lg-number">{timeLeft.hours}</span>
-                    <span className="home-lg-label">Hours</span>
-                  </div>
-                  <div className="home-lg-cd-box">
-                    <span className="home-lg-number">{timeLeft.minutes}</span>
-                    <span className="home-lg-label">Mins</span>
-                  </div>
-                  <div className="home-lg-cd-box">
-                    <span className="home-lg-number">{timeLeft.seconds}</span>
-                    <span className="home-lg-label">Secs</span>
-                  </div>
-                </div>
-              </div>
-
-              <button className="home-current-explore-btn" onClick={(e) => { e.stopPropagation(); handleEventClick(999); }}>
-                Explore Event &rarr;
-              </button>
-            </div>
-
-            <div className="home-current-right">
-              <div className="home-polaroid main-polaroid">
-                <img src={culturalFestImg} alt="Cultural Fest Main" />
-              </div>
-              <div className="home-polaroid side-polaroid-top">
-                <img src={culturalFest2} alt="Cultural Fest Crowd" />
-              </div>
-              <div className="home-polaroid side-polaroid-bottom">
-                <img src={culturalFest3} alt="Cultural Fest Performance" />
-              </div>
-              <div className="home-polaroid-watermark">Good Vibes Only</div>
-            </div>
-          </div>
-        </section>
-
-        {/* CURRENT EVENT & ENLARGED COUNTDOWN SECTION */}
-        <section>
-          <div className="home-current-event-container" onClick={() => handleEventClick(999)}>
-            <div className="home-current-left">
-              <div className="home-current-tag">UPCOMING EVENT</div>
-              <h2 className="home-current-title">Dandiya Night 2026</h2>
-              <p className="home-current-subtitle">Joyful days of music, dance, drama, creativity and celebration.</p>
-              
-              <div className="home-current-meta-row">
-                <div className="home-current-meta-item">
-                  <CalendarIcon className="w-4 h-4 text-teal-600" />
-                  <div>
-                    <strong>One Day</strong>
-                    <span>Be raedy on 16 October</span>
-                  </div>
-                </div>
-                <div className="home-current-meta-item">
-                  <MapPin className="w-4 h-4 text-teal-600" />
-                  <div>
-                    <strong>Main Campus</strong>
-                    <span>College Ground</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="home-current-tags-grid">
-                <span className="home-current-pill"><Music className="w-3.5 h-3.5" /> Performances</span>
-                <span className="home-current-pill"><Trophy className="w-3.5 h-3.5" /> Competitions</span>
                 <span className="home-current-pill"><Utensils className="w-3.5 h-3.5" /> Food Stalls</span>
-                <span className="home-current-pill"><Disc className="w-3.5 h-3.5" /> DJ Night</span>
+                <span className="home-current-pill"><Disc className="w-3.5 h-3.5" /> Quiz & Fun</span>
               </div>
 
+              {/* Glowing Countdown Box */}
               <div className="home-large-countdown-wrapper">
-                <span className="home-countdown-label-top">Countdown to Grand Finale</span>
+                <div className="countdown-header-row">
+                  <Clock className="w-4 h-4 text-amber-400" />
+                  <span className="home-countdown-label-top">Countdown to Live the Moment</span>
+                </div>
                 <div className="home-large-countdown-grid">
-                  <div className="home-lg-cd-box">
+                  <div className="home-lg-cd-box hover-lift">
                     <span className="home-lg-number">{timeLeft.days}</span>
                     <span className="home-lg-label">Days</span>
                   </div>
-                  <div className="home-lg-cd-box">
+                  <div className="home-lg-cd-box hover-lift">
                     <span className="home-lg-number">{timeLeft.hours}</span>
                     <span className="home-lg-label">Hours</span>
                   </div>
-                  <div className="home-lg-cd-box">
+                  <div className="home-lg-cd-box hover-lift">
                     <span className="home-lg-number">{timeLeft.minutes}</span>
                     <span className="home-lg-label">Mins</span>
                   </div>
-                  <div className="home-lg-cd-box">
+                  <div className="home-lg-cd-box hover-lift">
                     <span className="home-lg-number">{timeLeft.seconds}</span>
                     <span className="home-lg-label">Secs</span>
                   </div>
@@ -341,21 +268,9 @@ export default function Home() {
               </div>
 
               <button className="home-current-explore-btn" onClick={(e) => { e.stopPropagation(); handleEventClick(999); }}>
-                Explore Event &rarr;
+                Explore Event Details <ArrowRight className="w-4 h-4 ml-1 inline" />
               </button>
-            </div>
 
-            <div className="home-current-right">
-              <div className="home-polaroid main-polaroid">
-                <img src={culturalFestImg} alt="Cultural Fest Main" />
-              </div>
-              <div className="home-polaroid side-polaroid-top">
-                <img src={culturalFest2} alt="Cultural Fest Crowd" />
-              </div>
-              <div className="home-polaroid side-polaroid-bottom">
-                <img src={culturalFest3} alt="Cultural Fest Performance" />
-              </div>
-              <div className="home-polaroid-watermark">Good Vibes Only</div>
             </div>
           </div>
         </section>
@@ -397,7 +312,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PAST EVENTS SECTION (Matched to 4-Column Card Layout) */}
+        {/* PAST EVENTS SECTION */}
         <section className="home-whats-next-section">
           <div className="home-section-header">
             <div>
