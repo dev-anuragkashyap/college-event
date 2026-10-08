@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css';
+import '../Style/Footer.css';
 // Jab aap `npm install react-icons` kar lein, toh in imports ko uncomment kar sakte hain:
 // import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Contact.css';
+import '../Style/Contact.css';
 import { FaLinkedinIn,FaInstagram ,FaTwitter,FaFacebook } from "react-icons/fa";
 import { Mail, Phone, MapPin, Send, MessageSquare, ChevronDown, ChevronUp, CheckCircle2 } from 'lucide-react';
 import contactHeroImg from '../assets/contact-hero.jpeg'; // Local campus image for hero section

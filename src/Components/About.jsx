@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './About.css';
+import '../Style/About.css';
 import { Award, Users, Target, Calendar, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 
 // Import local assets from the assets folder

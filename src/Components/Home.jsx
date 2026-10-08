@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Home.css';
+import '../Style/Home.css';
 import { Calendar as CalendarIcon, MapPin, Clock, ArrowRight, Camera, Sparkles, Music, Trophy, Utensils, Disc, ChevronLeft, ChevronRight, Volleyball } from 'lucide-react';
 
 // Import your local assets from the assets folder

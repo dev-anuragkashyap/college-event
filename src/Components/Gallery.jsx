@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Gallery.css';
+import '../Style/Gallery.css';
 import { Camera, Video, Play, Filter, Sparkles } from 'lucide-react';
 
 // Import local assets
