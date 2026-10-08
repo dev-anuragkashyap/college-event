@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Style/Gallery.css';
-import { Camera, Video, Play, Filter, Sparkles } from 'lucide-react';
+import { Camera, Video, Play, Filter, Sparkles, ExternalLink, X } from 'lucide-react';
 
-// Import local assets
+// Import local assets & Hero Image
+import galleryHeroImg from '../assets/gallery-hero.jpeg';
 import culturalFestImg from '../assets/cultural.jpg';
 import culturalFest2 from '../assets/memory1.jpg';
 import culturalFest3 from '../assets/memory2.jpg';
@@ -20,6 +21,7 @@ export default function Gallery() {
   const navigate = useNavigate();
 
   const [activeFilter, setActiveFilter] = useState('All');
+  const [playingVideo, setPlayingVideo] = useState(null);
 
   // Photos configured with taller vertical and varied spans
   const allPhotos = [
@@ -35,7 +37,7 @@ export default function Gallery() {
     { id: 10, img: freshersImg, title: 'Freshers Party 2025', category: 'Campus Life', span: 'vertical-tall' }
   ];
 
-  // Video Highlights Data
+  // Video Highlights & Reels Data with actual stream URLs or embed links
   const eventVideos = [
     {
       id: 1,
@@ -43,7 +45,8 @@ export default function Gallery() {
       duration: "3:45",
       category: "Cultural",
       thumbnail: culturalFestImg,
-      videoUrl: "#"
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual stream URL
+      externalAppUrl: "https://instagram.com" // Redirect link when opening in other apps
     },
     {
       id: 2,
@@ -51,7 +54,8 @@ export default function Gallery() {
       duration: "4:20",
       category: "Tech",
       thumbnail: memory2,
-      videoUrl: "#"
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      externalAppUrl: "https://youtube.com"
     },
     {
       id: 3,
@@ -59,7 +63,8 @@ export default function Gallery() {
       duration: "5:10",
       category: "Sports",
       thumbnail: sportsImg,
-      videoUrl: "#"
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      externalAppUrl: "https://instagram.com"
     }
   ];
 
@@ -76,25 +81,29 @@ export default function Gallery() {
   return (
     <div className="gallery-container fade-in-page">
       
-      {/* Hero Header */}
+      {/* Hero Header with gallery-hero.jpeg Background */}
       <div className="gallery-hero">
-        <div className="gallery-hero-badge"><Camera className="w-4 h-4" /> Media Archives</div>
-        <h1 className="gallery-hero-title">Moments & Video Highlights</h1>
-        <p className="gallery-hero-desc">
-          Browse through our modern vertical photo wall and watch recap videos of past and ongoing campus celebrations.
-        </p>
+        <div className="gallery-hero-overlay" />
+        <img src={galleryHeroImg} alt="Gallery Hero" className="gallery-hero-bg" />
+        <div className="gallery-hero-content">
+          <div className="gallery-hero-badge"><Camera className="w-4 h-4" /> Media Archives</div>
+          <h1 className="gallery-hero-title">Moments & Video Highlights</h1>
+          <p className="gallery-hero-desc">
+            Browse through our modern vertical photo wall and watch recap reels of past and ongoing campus celebrations.
+          </p>
 
-        {/* Filter Pills */}
-        <div className="gallery-global-filters">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`gallery-filter-btn ${activeFilter === cat ? 'active' : ''}`}
-              onClick={() => setActiveFilter(cat)}
-            >
-              {cat}
-            </button>
-          ))}
+          {/* Filter Pills */}
+          <div className="gallery-global-filters">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                className={`gallery-filter-btn ${activeFilter === cat ? 'active' : ''}`}
+                onClick={() => setActiveFilter(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -121,7 +130,7 @@ export default function Gallery() {
           </div>
         </section>
 
-        {/* 2. VIDEO HIGHLIGHTS SECTION */}
+        {/* 2. REELS & VIDEO HIGHLIGHTS SECTION */}
         <section className="gallery-video-section">
           <div className="gallery-section-heading-wrap">
             <span className="gallery-sub-tag" style={{ color: '#FF9966' }}>RECAP REELS</span>
@@ -130,8 +139,8 @@ export default function Gallery() {
 
           <div className="gallery-videos-grid">
             {filteredVideos.map((vid) => (
-              <div key={vid.id} className="gallery-video-card hover-lift" onClick={() => alert("Playing video stream...")}>
-                <div className="gallery-video-thumb-wrap">
+              <div key={vid.id} className="gallery-video-card hover-lift">
+                <div className="gallery-video-thumb-wrap" onClick={() => setPlayingVideo(vid)}>
                   <img src={vid.thumbnail} alt={vid.title} />
                   <div className="gallery-video-play-overlay">
                     <div className="play-icon-circle">
@@ -142,7 +151,18 @@ export default function Gallery() {
                 </div>
                 <div className="gallery-video-body">
                   <span className="gallery-video-cat">{vid.category}</span>
-                  <h4 className="gallery-video-title">{vid.title}</h4>
+                  <div className="flex items-center justify-between mt-1">
+                    <h4 className="gallery-video-title">{vid.title}</h4>
+                    <a 
+                      href={vid.externalAppUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-teal-600 hover:text-teal-800 p-1"
+                      title="Open in external app"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -150,6 +170,37 @@ export default function Gallery() {
         </section>
 
       </div>
+
+      {/* IN-SITE VIDEO PLAYER MODAL */}
+      {playingVideo && (
+        <div className="video-modal-backdrop" onClick={() => setPlayingVideo(null)}>
+          <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="video-modal-close" onClick={() => setPlayingVideo(null)}>
+              <X className="w-6 h-6 text-white" />
+            </button>
+            <div className="video-responsive-frame">
+              <iframe 
+                src={`${playingVideo.videoUrl}?autoplay=1`} 
+                title={playingVideo.title} 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="p-4 bg-slate-900 text-white">
+              <h3 className="font-bold text-lg">{playingVideo.title}</h3>
+              <a 
+                href={playingVideo.externalAppUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-amber-400 mt-2 hover:underline font-semibold"
+              >
+                Open in App / Social Feed <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
