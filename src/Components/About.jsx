@@ -4,7 +4,7 @@ import './About.css';
 import { Award, Users, Target, Calendar, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 
 // Import local assets from the assets folder
-import aboutHeroImg from '../assets/hero-bg.jpeg';
+import aboutHeroImg from '../assets/contact-hero.jpeg';
 import campusTeamImg from '../assets/cultural.jpg';
 import workshopImg from '../assets/memory1.jpg';
 

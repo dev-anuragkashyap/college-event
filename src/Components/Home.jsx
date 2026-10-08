@@ -28,8 +28,8 @@ import memory5 from '../assets/memory5.jpg';
 export default function Home() {
   const navigate = useNavigate();
 
-  // Dynamic Countdown Timer State
-  const [timeLeft, setTimeLeft] = useState({ days: 6, hours: 2, minutes: 51, seconds: 12 });
+  // Dynamic Real-Time Countdown State (Targeting October 14, 2026)
+  const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
 
   // Gallery Category Filter State
   const [activeFilter, setActiveFilter] = useState('All');
@@ -38,7 +38,8 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState(7);
 
   useEffect(() => {
-    const targetDate = new Date('2026-10-12T00:00:00').getTime();
+    // Target event date set to October 14, 2026 at 00:00:00
+    const targetDate = new Date('2026-10-14T00:00:00').getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
