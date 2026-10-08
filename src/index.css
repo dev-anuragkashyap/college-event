@@ -166,4 +166,12 @@ img {
   .grid-cols-5 {
     grid-template-columns: 1fr !important;
   }
+}/* Prevent horizontal scrolling & forced overflow on mobile */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  max-width: 100%;
+  overflow-x: hidden;
 }
