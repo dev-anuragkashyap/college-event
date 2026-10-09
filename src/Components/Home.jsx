@@ -45,18 +45,20 @@ export default function Home() {
       location: "Main Campus Ground", 
       targetDate: new Date('2026-10-14T00:00:00').getTime(),
       durationDays: 1, 
-      img: culturalFestImg 
+      img: culturalFestImg,
+      routePath: "/events/young-minds-meet" 
     },
     { 
       id: 2, 
-      title: "TECHNOVA 2026", 
-      category: "Technical Fest", 
+      title: "Dandiya Night", 
+      category: "Cultural Fest", 
       date: "16 Oct 2026", 
       dateString: "16 October 2026",
-      location: "Auditorium & Labs", 
+      location: "College Ground", 
       targetDate: new Date('2026-10-16T10:00:00').getTime(),
       durationDays: 1,
-      img: technovaImg 
+      img: culturalFestImg,
+      routePath: "/events/dandiya" 
     },
     { 
       id: 3, 
@@ -67,7 +69,8 @@ export default function Home() {
       location: "College Ground", 
       targetDate: new Date('2026-10-25T09:00:00').getTime(),
       durationDays: 2,
-      img: sportsMeetImg 
+      img: sportsMeetImg,
+      routePath: "/events/3" 
     },
     { 
       id: 4, 
@@ -78,7 +81,8 @@ export default function Home() {
       location: "Seminar Hall", 
       targetDate: new Date('2026-11-02T17:00:00').getTime(),
       durationDays: 1,
-      img: openMicImg 
+      img: openMicImg,
+      routePath: "/events/4" 
     },
     { 
       id: 5, 
@@ -89,16 +93,17 @@ export default function Home() {
       location: "College Ground", 
       targetDate: new Date('2026-11-12T14:00:00').getTime(),
       durationDays: 1,
-      img: freshersImg 
+      img: freshersImg,
+      routePath: "/events/5" 
     }
   ];
 
   // Static archives from previous years
   const staticPastEvents = [
-    { id: 101, title: "FRESHER'S PARTY 2025", category: "Welcome Event", date: "16 Aug 2025", location: "College Ground", tag: "PAST EVENT", img: pastFreshersImg },
-    { id: 102, title: "SPORTS DAY 2025", category: "Sports Championship", date: "20 Mar 2025", location: "Sports Ground", tag: "PAST EVENT", img: pastSportsImg },
-    { id: 103, title: "ANNUAL FEST 2025", category: "Cultural Fest", date: "10 Dec 2025", location: "Auditorium", tag: "PAST EVENT", img: pastAnnualImg },
-    { id: 104, title: "CULTURAL NIGHT 2025", category: "Music & Dance", date: "01 Nov 2025", location: "College Ground", tag: "PAST EVENT", img: pastCulturalImg }
+    { id: 101, title: "FRESHER'S PARTY 2025", category: "Welcome Event", date: "16 Aug 2025", location: "College Ground", tag: "PAST EVENT", img: pastFreshersImg, routePath: "/events/101" },
+    { id: 102, title: "SPORTS DAY 2025", category: "Sports Championship", date: "20 Mar 2025", location: "Sports Ground", tag: "PAST EVENT", img: pastSportsImg, routePath: "/events/102" },
+    { id: 103, title: "ANNUAL FEST 2025", category: "Cultural Fest", date: "10 Dec 2025", location: "Auditorium", tag: "PAST EVENT", img: pastAnnualImg, routePath: "/events/103" },
+    { id: 104, title: "CULTURAL NIGHT 2025", category: "Music & Dance", date: "01 Nov 2025", location: "College Ground", tag: "PAST EVENT", img: pastCulturalImg, routePath: "/events/104" }
   ];
 
   useEffect(() => {
@@ -173,13 +178,10 @@ export default function Home() {
   const month = currentDate.getMonth(); // 0 - 11
   const monthName = currentDate.toLocaleString('default', { month: 'long' });
 
-  // Get total days in current month and starting day index
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const firstDayIndex = new Date(year, month, 1).getDay(); // 0 (Sun) to 6 (Sat)
-  // Adjust so Monday is index 0
+  const firstDayIndex = new Date(year, month, 1).getDay(); 
   const adjustedFirstDayIndex = (firstDayIndex === 0 ? 6 : firstDayIndex - 1);
 
-  // Helper to check if an event falls on a specific calendar day
   const getEventsForDay = (day) => {
     const checkDateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     
@@ -200,8 +202,15 @@ export default function Home() {
     setCurrentDate(new Date(year, month + 1, 1));
   };
 
-  const handleEventClick = (id) => {
-    navigate(`/events/${id}`);
+  // Update the handler to accept either an ID or a direct URL path
+  const handleEventClick = (eventOrPath) => {
+    if (typeof eventOrPath === 'number' && eventOrPath === 1) {
+      navigate('/events/young-minds-meet'); // Direct route to Young Minds Meet
+    } else if (typeof eventOrPath === 'string') {
+      navigate(eventOrPath);
+    } else {
+      navigate(`/events/${eventOrPath}`);
+    }
   };
 
   return (
@@ -238,7 +247,11 @@ export default function Home() {
         {/* DYNAMIC NEAREST FEATURED COUNTDOWN SECTION */}
         {nearestEvent && (
           <section>
-            <div className="home-current-event-container countdown-hero-section" onClick={() => handleEventClick(nearestEvent.id)}>
+            <div 
+              className="home-current-event-container countdown-hero-section" 
+              onClick={() => handleEventClick(nearestEvent.routePath)}
+              style={{ cursor: 'pointer' }}
+            >
               <div className="countdown-content-wrapper">
                 
                 <div className="countdown-badge-pill">
@@ -292,7 +305,13 @@ export default function Home() {
                   </div>
                 </div>
 
-                <button className="home-current-explore-btn" onClick={(e) => { e.stopPropagation(); handleEventClick(nearestEvent.id); }}>
+                <button 
+                  className="home-current-explore-btn" 
+                  onClick={(e) => { 
+                    e.stopPropagation(); 
+                    handleEventClick(nearestEvent.routePath); 
+                  }}
+                >
                   Explore Event Details <ArrowRight className="w-4 h-4 ml-1 inline" />
                 </button>
 
@@ -315,7 +334,7 @@ export default function Home() {
 
             <div className="home-whats-next-grid">
               {whatsNextEvents.map((item) => (
-                <div key={item.id} className="home-wn-card" onClick={() => handleEventClick(item.id)}>
+                <div key={item.id} className="home-wn-card" onClick={() => handleEventClick(item.routePath)}>
                   <div className="home-wn-img-wrap">
                     <span className="home-wn-badge">UPCOMING</span>
                     <img src={item.img} alt={item.title} />
@@ -349,7 +368,7 @@ export default function Home() {
 
           <div className="home-whats-next-grid">
             {dynamicPastEvents.map((item) => (
-              <div key={item.id} className="home-wn-card" onClick={() => handleEventClick(item.id)}>
+              <div key={item.id} className="home-wn-card" onClick={() => navigate('/gallery')}>
                 <div className="home-wn-img-wrap">
                   <span className="home-wn-badge" style={{ backgroundColor: 'rgba(33, 158, 188, 0.9)' }}>PAST</span>
                   <img src={item.img} alt={item.title} />
@@ -490,7 +509,7 @@ export default function Home() {
               <div className="home-cal-items-wrap">
                 {selectedDayEvents.length > 0 ? (
                   selectedDayEvents.map((evt, idx) => (
-                    <div key={idx} className="home-cal-event-card" onClick={() => handleEventClick(evt.id)}>
+                    <div key={idx} className="home-cal-event-card" onClick={() => handleEventClick(evt.routePath)}>
                       <div className="home-cal-event-info">
                         <span className="home-dot ongoing" style={{ display: 'inline-block', marginRight: '6px', marginTop: '4px' }}></span>
                         <div>

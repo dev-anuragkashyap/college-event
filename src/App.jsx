@@ -8,6 +8,8 @@ import About from './Components/About';
 // import Events from './pages/Events';
 import Gallery from './Components/Gallery';
 import Contact from './Components/Contact';
+import YoungMindsMeet from './Events/YoungMindsMeet';
+import Dandiya from './Events/Dandiya';
 import './App.css';
 
 export default function App() {
@@ -25,6 +27,8 @@ export default function App() {
             */}
             <Route path="/gallery" element={<Gallery />} /> 
             <Route path="/contact" element={<Contact />} />
+            <Route path="/events/young-minds-meet" element={<YoungMindsMeet />} />
+            <Route path="/events/dandiya" element={<Dandiya />} />
           </Routes>
         </main>
         <Footer />
