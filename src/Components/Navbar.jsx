@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../Style/Navbar.css';
-import logoImg from '../assets/logo.jpeg'; // Ensure you have a logo image in the specified path
+import logoImg from '../assets/logo.jpeg';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,13 +19,13 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         
-        {/* Logo */}
+        {/* Logo (Left Side) */}
         <div className="nav-logo" onClick={() => navigate('/')}>
           <img src={logoImg} alt="CampusEvents Logo" className="logo-img" />
           <span className="logo-text">Campus<span className="logo-highlight">Events</span></span>
         </div>
 
-        {/* Nav Links using NavLink for active routing */}
+        {/* Nav Links (Centered) */}
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
           {navItems.map((item) => (
             <NavLink
@@ -39,10 +39,8 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Right Actions */}
+        {/* Right Actions (Right Side: Explore Events Button & Mobile Hamburger) */}
         <div className="nav-actions">
-
-          
           <button className="explore-events-btn" onClick={() => navigate('/events')}>
             Explore Events <span>→</span>
           </button>

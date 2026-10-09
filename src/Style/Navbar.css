@@ -1,3 +1,6 @@
+/* ==========================================
+   NAVBAR STYLESHEET (Centered Links & Right CTA)
+   ================================          */
 .navbar {
   background-color: #0d0d12;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -12,17 +15,19 @@
   max-width: 1350px;
   margin: 0 auto;
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* Left logo, flexible center, right actions */
   align-items: center;
+  gap: 2rem;
 }
 
-/* Logo Styling */
+/* Logo Styling (Left) */
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   cursor: pointer;
+  justify-self: start;
 }
 
 .logo-img {
@@ -43,11 +48,13 @@
   color: #E76F51;
 }
 
-/* Nav Links Styling & Hover/Active Animation */
+/* Nav Links Styling & Hover/Active Animation (Center) */
 .nav-links {
   display: flex;
+  justify-content: center; /* Centers navigation items */
   gap: 2.5rem;
   align-items: center;
+  justify-self: center;
 }
 
 .nav-item {
@@ -64,7 +71,7 @@
   color: #FFFFFF;
 }
 
-/* Active Underline Glow Animation matching reference */
+/* Active Underline Glow Animation */
 .nav-item.active {
   color: #FFFFFF;
 }
@@ -97,11 +104,12 @@
   margin-left: 2px;
 }
 
-/* Right Actions */
+/* Right Actions (Right) */
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  justify-self: end;
 }
 
 .search-icon-btn {
@@ -117,7 +125,7 @@
   transform: scale(1.1);
 }
 
-/* Explore Events Button matching reference image */
+/* Explore Events Button */
 .explore-events-btn {
   background: transparent;
   color: #FFFFFF;
@@ -170,16 +178,17 @@
 
 /* Highly Responsive Mobile Layout */
 @media (max-width: 900px) {
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .hamburger {
     display: flex;
   }
 
   .explore-events-btn {
-    display: none; /* Hide top outline button on compact screens if space is tight, or keep it */
-  }
-
-  .nav-container {
-    padding: 0.9rem 1.2rem;
+    display: none; 
   }
 
   .nav-links {
@@ -187,6 +196,7 @@
     top: 0;
     right: -100%;
     width: 75%;
+    max-width: 300px;
     height: 100vh;
     background-color: #121216;
     flex-direction: column;
@@ -210,6 +220,7 @@
     bottom: -6px;
   }
 }
+
 .mobile-menu-drawer {
   position: fixed;
   top: 0;
@@ -218,5 +229,4 @@
   max-width: 300px;
   height: 100vh;
   z-index: 1000;
-  /* ensure it overlays instead of pushing layout */
 }

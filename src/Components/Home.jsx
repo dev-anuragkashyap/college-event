@@ -38,11 +38,11 @@ export default function Home() {
   const allMasterEvents = [
     { 
       id: 1, 
-      title: "Campus Visit 2026", 
+      title: "Young Minds Meet", 
       category: "College Tour", 
       date: "14 Oct 2026", 
       dateString: "14 October 2026",
-      location: "Main Campus Ground", 
+      location: "Main Campus ", 
       targetDate: new Date('2026-10-14T00:00:00').getTime(),
       durationDays: 1, 
       img: culturalFestImg,
@@ -62,11 +62,11 @@ export default function Home() {
     },
     { 
       id: 3, 
-      title: "SPORTS MEET", 
-      category: "Sports Championship", 
+      title: "Hackathon 2026", 
+      category: "tech Fest", 
       date: "25 Oct 2026", 
       dateString: "25 October 2026",
-      location: "College Ground", 
+      location: "College Campus", 
       targetDate: new Date('2026-10-25T09:00:00').getTime(),
       durationDays: 2,
       img: sportsMeetImg,
