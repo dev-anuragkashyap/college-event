@@ -4,7 +4,7 @@ import '../Style/Gallery.css';
 import { Camera, Video, Play, Filter, Sparkles, ExternalLink, X } from 'lucide-react';
 
 // Import local assets & Hero Image
-import galleryHeroImg from '../assets/gallery-hero.jpeg';
+import galleryHeroImg from '../assets/Gallery-hero.jpeg';
 import culturalFestImg from '../assets/cultural.jpg';
 import culturalFest2 from '../assets/memory1.jpg';
 import culturalFest3 from '../assets/memory2.jpg';
