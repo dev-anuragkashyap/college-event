@@ -12,10 +12,10 @@ export default function About() {
   const navigate = useNavigate();
 
   const stats = [
-    { label: "Annual Events", value: "25+" },
-    { label: "Active Students", value: "3,500+" },
-    { label: "Campus Clubs", value: "15+" },
-    { label: "Memories Captured", value: "10k+" }
+    { label: "Annual Events", value: "10+" },
+    { label: "Active Students", value: "500+" },
+    { label: "Campus Clubs", value: "6+" },
+    { label: "Memories Captured", value: "5k+" }
   ];
 
   const coreValues = [
