@@ -10,6 +10,7 @@ import Gallery from './Components/Gallery';
 import Contact from './Components/Contact';
 import YoungMindsMeet from './Events/YoungMindsMeet';
 import Dandiya from './Events/Dandiya';
+import Events from './Components/Events';
 import './App.css';
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/events/young-minds-meet" element={<YoungMindsMeet />} />
             <Route path="/events/dandiya" element={<Dandiya />} />
+            <Route path="/events" element={<Events />} />
           </Routes>
         </main>
         <Footer />

@@ -5,7 +5,7 @@ import { Calendar as CalendarIcon, MapPin, Clock, Music, Sparkles, Camera, Arrow
 
 // Import local assets including QR code and gallery images
 import dandiyaHeroImg from '../assets/cultural.jpg';
-import qrCodeImg from '../assets/logo.jpeg'; 
+import qrCodeImg from '../assets/logo.png'; 
 import gallery1 from '../assets/memory1.jpg';
 import gallery2 from '../assets/memory2.jpg';
 import gallery3 from '../assets/memory3.jpg';

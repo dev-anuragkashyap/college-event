@@ -1,73 +1,107 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../Style/Footer.css';
-// Jab aap `npm install react-icons` kar lein, toh in imports ko uncomment kar sakte hain:
-// import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { MdPhone, MdLocationOn, MdEmail } from 'react-icons/md';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
         
-        {/* Left Column: Logo & Tagline */}
+        {/* Column 1: Brand & Contact Info */}
         <div className="footer-col brand-col">
           <div className="footer-logo">
-            <span className="logo-icon">🔥</span>
-            <span className="logo-text">Study Hall college</span>
+            <span className="logo-text">Study Hall College</span>
           </div>
-          <p className="footer-tagline">Together We Celebrate</p>
+          
+          <div className="footer-contact-info">
+            <p><MdPhone className="f-icon" /> +91 84000 78621</p>
+            <p><MdLocationOn className="f-icon" /> Piparsand - Kanpur Road<br />Lucknow (U.P.)</p>
+            <p><MdEmail className="f-icon" /> info@studyhallcollege.org,<br />thestudyhallcollege@gmail.com</p>
+          </div>
         </div>
 
-        {/* Middle Column: Quick Links */}
+        {/* Column 2: Quick Links */}
         <div className="footer-col links-col">
           <h4>Quick Links</h4>
+          <span className="col-line"></span>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/events">Events</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
-        {/* Right Column: Follow Us & Social Icons & Copyright */}
-        <div className="footer-col social-col">
-          <h4>Follow Us</h4>
-          <div className="social-icons-row">
-            {/* Yahan aap apne react-icons use karenge */}
-            <a href="#instagram" aria-label="Instagram">
-              {/* <FaInstagram /> */}
-              <span>📷</span>
-            </a>
-            <a href="#youtube" aria-label="YouTube">
-              {/* <FaYoutube /> */}
-              <span>▶</span>
-            </a>
-            <a href="#facebook" aria-label="Facebook">
-              {/* <FaFacebookF /> */}
-              <span>f</span>
-            </a>
-            <a href="#twitter" aria-label="Twitter">
-              {/* <FaTwitter /> */}
-              <span>𝕏</span>
-            </a>
-            <a href="#linkedin" aria-label="LinkedIn">
-              {/* <FaLinkedinIn /> */}
-              <span>in</span>
-            </a>
-          </div>
-          
-          <div className="footer-copyright-right">
-            <p>© 2026 Study Hall college. All rights reserved.</p>
+        {/* Column 3: Upcoming Events (Replaces Our Campus) */}
+        <div className="footer-col links-col">
+          <h4>Upcoming Events</h4>
+          <span className="col-line"></span>
+          <ul>
+            <li><Link to="/events/dandiya-night">Dandiya Night 2026</Link></li>
+            <li><Link to="/events/young-minds-meet">Young Minds Meet</Link></li>
+            <li><Link to="/events">All Campus Events</Link></li>
+          </ul>
+        </div>
+
+        {/* Column 4: Main Website Links (Replaces All Programs) */}
+        <div className="footer-col links-col">
+          <h4>Main Website</h4>
+          <span className="col-line"></span>
+          <ul>
+            <li>
+              <a href="https://www.studyhallcollege.org" target="_blank" rel="noopener noreferrer">
+                Official College Portal ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://www.studyhallcollege.org" target="_blank" rel="noopener noreferrer">
+                Admissions & Fee Structure ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://www.studyhallcollege.org" target="_blank" rel="noopener noreferrer">
+                Campus Facilities ↗
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 5: Visit Us (Map) */}
+        <div className="footer-col visit-col">
+          <h4>Visit Us</h4>
+          <span className="col-line"></span>
+          <div className="footer-map-wrapper">
+            {/* 
+              ADD YOUR MAP HERE: 
+              Replace the iframe src below with your own Google Maps embed code or custom map URL when ready.
+            */}
+            <iframe 
+              title="Study Hall College Map"
+              src="https://maps.app.goo.gl/mG365winUyNWHJhJ6" 
+              width="100%" 
+              height="160" 
+              style={{ border: 0 }} 
+              allowFullScreen="" 
+              loading="lazy">
+            </iframe>
           </div>
         </div>
 
       </div>
 
-      {/* Decorative Line Art / SVG matching your design */}
-      <div className="footer-art-line">
-        <svg viewBox="0 0 500 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 50C100 10 150 50 250 25C350 0 400 45 500 15" stroke="rgba(231, 111, 81, 0.4)" strokeWidth="1.5"/>
-        </svg>
+      {/* Footer Bottom Bar with Working Social Media Links */}
+      <div className="footer-bottom-bar">
+        <p>© 2026 Study Hall College. All Rights Reserved.</p>
+        <div className="social-icons-row">
+          <a href="https://www.facebook.com/StudyHallCollege/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
+          <a href="https://www.linkedin.com/school/the-study-hall-college/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
+          <a href="https://www.instagram.com/studyhallcollege_official/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
+          <a href="https://x.com/studyhalcollege" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FaTwitter /></a>
+          <a href="https://www.youtube.com/@STUDYHALLCOLLEGE" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><FaYoutube /></a>
+        </div>
       </div>
     </footer>
   );

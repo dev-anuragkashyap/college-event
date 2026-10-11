@@ -1,0 +1,354 @@
+/* ================= GLOBAL ================= */
+
+.events-page {
+  width: 100%;
+  overflow: hidden;
+}
+
+.events-page *,
+.events-page *::before,
+.events-page *::after {
+  box-sizing: border-box;
+}
+
+.events-page a {
+  text-decoration: none;
+}
+
+.events-container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+
+
+/* ================= HERO ================= */
+
+.events-hero {
+  position: relative;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.events-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.events-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 90%);
+  padding: 70px 0;
+  animation: eventsFadeUp 0.8s ease both;
+}
+
+.events-eyebrow {
+  display: inline-block;
+  letter-spacing: 2px;
+}
+
+.events-hero h1 {
+  margin: 20px 0;
+  line-height: 1.1;
+}
+
+.events-hero p {
+  max-width: 590px;
+  margin-bottom: 28px;
+  line-height: 1.8;
+}
+
+.hero-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-radius: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-explore-btn:hover {
+  transform: translateY(-3px);
+}
+
+
+/* ================= FILTER ================= */
+
+.events-filter-section {
+  padding: 26px 5%;
+}
+
+.events-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.events-filter button {
+  padding: 12px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.events-section {
+  padding: 75px 0;
+  scroll-margin-top: 20px;
+}
+
+.events-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 32px;
+}
+
+.events-section-label {
+  letter-spacing: 2px;
+}
+
+.events-section-heading h2 {
+  margin: 12px 0;
+}
+
+.events-section-heading p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+
+/* ================= EVENT GRID ================= */
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.event-card {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  animation: eventsFadeUp 0.6s ease both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-7px);
+}
+
+
+/* ================= EVENT IMAGE ================= */
+
+.event-card-image {
+  position: relative;
+  height: 205px;
+  overflow: hidden;
+}
+
+.event-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.event-card:hover .event-card-image img {
+  transform: scale(1.07);
+}
+
+.event-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 7px 11px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+
+/* ================= EVENT CONTENT ================= */
+
+.event-card-content {
+  padding: 21px 18px;
+}
+
+.event-category {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.event-card-content h3 {
+  min-height: 48px;
+  margin: 10px 0 16px;
+  line-height: 1.35;
+}
+
+.event-info {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.event-info p {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.event-info p span {
+  flex-shrink: 0;
+}
+
+.event-view-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 9px;
+  transition: all 0.25s ease;
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes eventsFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1050px) {
+  .events-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .event-card-image {
+    height: 190px;
+  }
+}
+
+@media (max-width: 780px) {
+  .events-hero {
+    min-height: 400px;
+    background-position: 58% center;
+  }
+
+  .events-hero-content {
+    width: 88%;
+    margin: 0 auto;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .events-section {
+    padding: 58px 0;
+  }
+
+  .event-card-image {
+    height: 210px;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 520px) {
+  .events-hero {
+    min-height: 390px;
+    background-position: 60% center;
+  }
+
+  .events-hero-content {
+    padding: 50px 0;
+  }
+
+  .events-eyebrow {
+    letter-spacing: 1.2px;
+  }
+
+  .events-hero h1 {
+    margin: 16px 0;
+  }
+
+  .hero-explore-btn {
+    padding: 12px 20px;
+  }
+
+  .events-filter-section {
+    padding: 20px 12px;
+  }
+
+  .events-filter {
+    gap: 8px;
+  }
+
+  .events-filter button {
+    padding: 10px 13px;
+  }
+
+  .events-container {
+    width: 90%;
+  }
+
+  .events-section {
+    padding: 45px 0;
+  }
+
+  .events-section-heading {
+    margin-bottom: 24px;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .event-card-image {
+    height: 235px;
+  }
+
+  .event-card-content {
+    padding: 20px;
+  }
+
+  .event-card-content h3 {
+    min-height: 0;
+  }
+}
+
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .events-page *,
+  .events-page *::before,
+  .events-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

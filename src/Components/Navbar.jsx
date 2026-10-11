@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../Style/Navbar.css';
-import logoImg from '../assets/logo.jpeg';
+import logoImg from '../assets/logo.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,10 +19,9 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         
-        {/* Logo (Left Side) */}
+        {/* Logo Only (Left Side) */}
         <div className="nav-logo" onClick={() => navigate('/')}>
-          <img src={logoImg} alt="CampusEvents Logo" className="logo-img" />
-          <span className="logo-text">Campus<span className="logo-highlight">Events</span></span>
+          <img src={logoImg} alt="Study Hall College Logo" className="logo-img" />
         </div>
 
         {/* Nav Links (Centered) */}
@@ -39,7 +38,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Right Actions (Right Side: Explore Events Button & Mobile Hamburger) */}
+        {/* Right Actions (Explore Events Button & Mobile Hamburger) */}
         <div className="nav-actions">
           <button className="explore-events-btn" onClick={() => navigate('/events')}>
             Explore Events <span>→</span>

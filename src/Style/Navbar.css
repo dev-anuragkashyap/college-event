@@ -1,5 +1,5 @@
 /* ==========================================
-   NAVBAR STYLESHEET (Centered Links & Right CTA)
+   NAVBAR STYLESHEET (150px Logo Without Navbar Expansion)
    ================================          */
 .navbar {
   background-color: #0d0d12;
@@ -31,8 +31,8 @@
 }
 
 .logo-img {
-  width: 36px;
-  height: 36px;
+  width: 150px; /* Increased width to 150px */
+  height: 150px; /* Controlled height so navbar doesn't expand */
   object-fit: contain;
 }
 
@@ -181,6 +181,11 @@
   .nav-container {
     display: flex;
     justify-content: space-between;
+  }
+
+  .logo-img {
+    width: 120px; /* Slightly scaled for smaller screens while keeping proportions */
+    height: 36px;
   }
 
   .hamburger {
