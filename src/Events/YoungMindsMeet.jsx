@@ -4,7 +4,7 @@ import "./YoungMindsMeet.css";
 // Import your campus background hero image (adjust path if needed)
 import campusBgImg from '../assets/young-bg.jpeg';
 
-const quizLink = "https://docs.google.com/forms/d/13jBk8ibV9L8Idz8IST0F8BhXO0xul_C97ULi21mlWuc/edit?ts=6a1abf91";
+const quizLink = "https://timer.pipiform.com/HwUzFc";
 
 const activities = [
   {

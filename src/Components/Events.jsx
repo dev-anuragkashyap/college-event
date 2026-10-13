@@ -8,6 +8,9 @@ import FresherImg from '../assets/FresherImage.jpeg';
 import SportsImg from '../assets/SportsDay.jpeg';
 import SpardhaImg from '../assets/Spardha.jpeg';
 import HackathonImg from '../assets/Hackathon.jpg';
+import OpenImg from '../assets/open-house.png';
+import CookingImg from '../assets/Cooking.jpeg';
+import OreintationImg from '../assets/Orientation.jpg';
 
 const upcomingEvents = [
   {
@@ -17,6 +20,7 @@ const upcomingEvents = [
     location: "College Ground",
     image: DandiyaImg,
     category: "Cultural",
+    routePath: "/events/dandiya"
   },
   {
     id: "Young-Minds-Meet",
@@ -66,15 +70,23 @@ const pastEvents = [
     title: "Open House 2026",
     date: "19 October 2026",
     location: "College Campus",
-    image: "/images/fest-2025.jpg",
+    image: OpenImg,
     category: "Festival",
   },
   {
-    id: "cultural-night-2025",
-    title: "Cultural Night 2025",
-    date: "15 October 2025",
-    location: "College Ground",
-    image: "/images/cultural-2025.jpg",
+    id: "cooking-competition-2026",
+    title: "Cooking Without Fire 2026",
+    date: "03 September 2026",
+    location: "College Cafeteria",
+    image: CookingImg,
+    category: "Cultural",
+  },
+  {
+    id: "orientation-2026",
+    title: "Orientation 2026",
+    date: "27 September 2026",
+    location: "Activity Hall ",
+    image: OreintationImg,
     category: "Cultural",
   },
 ];
