@@ -1,22 +1,21 @@
 /* ==========================================
-   NAVBAR STYLESHEET (150px Logo Without Navbar Expansion)
+   NAVBAR STYLESHEET (Fixed Alignment & Logo Size)
    ================================          */
 .navbar {
-  background-color: #0d0d12;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 1000;
-  backdrop-filter: blur(12px);
 }
 
 .nav-container {
   max-width: 1350px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   display: grid;
-  grid-template-columns: auto 1fr auto; /* Left logo, flexible center, right actions */
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 2rem;
 }
@@ -25,33 +24,26 @@
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
   justify-self: start;
 }
 
 .logo-img {
-  width: 150px; /* Increased width to 150px */
-  height: 150px; /* Controlled height so navbar doesn't expand */
+  width: 160px;
+  height: 48px;
   object-fit: contain;
+  background: transparent;
+  display: block;
 }
 
-.logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: 0.3px;
-}
-
-.logo-highlight {
-  color: #E76F51;
-}
-
-/* Nav Links Styling & Hover/Active Animation (Center) */
+/* Nav Links Styling (Center) */
 .nav-links {
   display: flex;
-  justify-content: center; /* Centers navigation items */
+  justify-content: center;
   gap: 2.5rem;
   align-items: center;
   justify-self: center;
@@ -59,21 +51,20 @@
 
 .nav-item {
   text-decoration: none;
-  color: #B0B0B0;
-  font-size: 0.92rem;
-  font-weight: 500;
+  color: #E0E0E0;
+  font-size: 0.95rem;
+  font-weight: 600;
   position: relative;
   transition: color 0.3s ease;
   padding: 0.3rem 0;
 }
 
 .nav-item:hover {
-  color: #FFFFFF;
+  color: #ffd000;
 }
 
-/* Active Underline Glow Animation */
 .nav-item.active {
-  color: #FFFFFF;
+  color: #ffd000;
 }
 
 .nav-item.active::after {
@@ -83,7 +74,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #E76F51, #7B1C3A);
+  background: linear-gradient(90deg, #FFB703, #219EBC);
   border-radius: 2px;
   animation: slideIn 0.3s ease-in-out;
 }
@@ -104,7 +95,7 @@
   margin-left: 2px;
 }
 
-/* Right Actions (Right) */
+/* Right Actions */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -112,41 +103,27 @@
   justify-self: end;
 }
 
-.search-icon-btn {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #FFFFFF;
-  transition: transform 0.2s;
-}
-
-.search-icon-btn:hover {
-  transform: scale(1.1);
-}
-
-/* Explore Events Button */
 .explore-events-btn {
-  background: transparent;
-  color: #FFFFFF;
-  border: 1.5px solid #E76F51;
+  background: #e9e9e9;
+  color: #023047;
+  border: 1.5px solid #75d1ec;
   padding: 0.55rem 1.2rem;
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 10px rgba(231, 111, 81, 0.15);
+  box-shadow: 0 0 12px rgba(21, 3, 187, 0.25);
 }
 
 .explore-events-btn:hover {
-  background: linear-gradient(135deg, #7B1C3A, #E76F51);
-  border-color: transparent;
+  background: #75d1ec;
+  border-color: #75d1ec;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(231, 111, 81, 0.4);
+  box-shadow: 0 6px 18px rgba(21, 3, 187,  0.4);
 }
 
 /* Hamburger Menu Icon (Hidden on Desktop) */
@@ -165,7 +142,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Animated Hamburger Transformation */
 .hamburger.toggle span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -176,7 +152,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Highly Responsive Mobile Layout */
+/* Responsive Mobile Layout */
 @media (max-width: 900px) {
   .nav-container {
     display: flex;
@@ -184,8 +160,8 @@
   }
 
   .logo-img {
-    width: 120px; /* Slightly scaled for smaller screens while keeping proportions */
-    height: 36px;
+    width: 130px;
+    height: 38px;
   }
 
   .hamburger {
@@ -203,12 +179,12 @@
     width: 75%;
     max-width: 300px;
     height: 100vh;
-    background-color: #121216;
+    background-color: #000000;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    box-shadow: -5px 0 25px rgba(0,0,0,0.6);
+    box-shadow: -5px 0 25px rgba(0,0,0,0.8);
     transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     z-index: 1000;
   }
@@ -220,18 +196,4 @@
   .nav-item {
     font-size: 1.15rem;
   }
-
-  .nav-item.active::after {
-    bottom: -6px;
-  }
-}
-
-.mobile-menu-drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 75%;
-  max-width: 300px;
-  height: 100vh;
-  z-index: 1000;
 }

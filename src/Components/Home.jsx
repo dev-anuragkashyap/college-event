@@ -45,7 +45,7 @@ export default function Home() {
       date: "14 Oct 2026", 
       dateString: "14 October 2026",
       location: "Main Campus ", 
-      targetDate: new Date('2026-10-14T00:00:00').getTime(),
+      targetDate: new Date('2026-10-14T09:00:00').getTime(),
       durationDays: 1, 
       img: culturalFestImg,
       routePath: "/events/young-minds-meet" 
